@@ -1,6 +1,6 @@
-# Pi WebUI Website
+# Pi Cloud Website
 
-The landing page for [Pi WebUI](https://github.com/xianzhon/pi-webui).
+The landing page for [Pi Cloud](https://github.com/xianzhon/pi-cloud).
 
 ## Local preview
 
