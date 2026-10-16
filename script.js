@@ -26,8 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   launcherTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      launcherTabs.forEach((t) => t.classList.remove('active'));
+      launcherTabs.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
       tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
       const cmd = tab.dataset.cmd;
       if (cliCode) cliCode.textContent = cmd;
       if (mainCopyBtn) mainCopyBtn.dataset.copy = cmd;
@@ -62,8 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   showcaseTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
-      showcaseTabs.forEach((t) => t.classList.remove('active'));
+      showcaseTabs.forEach((t) => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
       tab.classList.add('active');
+      tab.setAttribute('aria-pressed', 'true');
 
       const imgSrc = tab.dataset.img;
       const title = tab.dataset.title;
@@ -91,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openLightbox(src, caption) {
     if (!dialog || !lightboxImg) return;
     lightboxImg.src = src;
+    lightboxImg.alt = caption || 'Expanded product screenshot';
     if (lightboxCaption) lightboxCaption.textContent = caption || '';
     dialog.showModal();
   }
@@ -101,6 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const caption = el.dataset.caption || el.getAttribute('alt') || '';
       openLightbox(src, caption);
     });
+  });
+
+  document.getElementById('showcase-open')?.addEventListener('click', () => {
+    if (showcaseImg) openLightbox(showcaseImg.src, showcaseTitle?.textContent);
   });
 
   closeBtn?.addEventListener('click', () => dialog?.close());
