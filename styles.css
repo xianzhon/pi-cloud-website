@@ -544,6 +544,10 @@ section[id] { scroll-margin-top: 110px; }
 .install-note { max-width: 560px; }
 .feature-box { height: 100%; }
 .feature-box .feature-shot-wrap, .feature-box video { margin-top: auto; }
+.feature-media { display: grid; gap: 10px; margin: auto 0 0; }
+.feature-media figcaption, .mobile-preview figcaption, .showcase-meta .media-note { color: var(--muted); font-size: 12px; line-height: 1.5; }
+.mobile-preview { display: grid; gap: 12px; margin: 0; max-width: 280px; justify-self: center; }
+.mobile-preview figcaption { text-align: center; }
 .demo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .demo-grid video { display: block; width: 100%; height: auto; border: 1px solid var(--border); border-radius: 12px; background: #101016; }
 .mobile-section { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 72px; align-items: center; }

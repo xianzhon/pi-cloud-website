@@ -2,7 +2,45 @@
 
 ## Source and provenance
 
-The current tour was captured from a fresh source build of **Pi Cloud 2.0.5**, commit `4270a87`. All screenshots show the actual application, not HTML reconstructions or DOM replacements.
+The current workflow tour reuses **Pi Cloud 2.0.6** media from the Chinese WeChat article series. All screenshots show the actual application, not HTML reconstructions or DOM replacements. The site copy stays English, with the Chinese-language sample interface identified beside the tour. It does not embed Yuque resources or depend on the demo server.
+
+### Article media reused in the workflow tour
+
+Sources below are relative to the article workspace, `pi-cloud/tmp/wechat-article-series/`. Final assets live in this website's `assets/screenshots/`; the source PNGs and runtime data are not copied into the public site.
+
+| Published WebP | Article source | Dimensions | What it demonstrates |
+| --- | --- | --- | --- |
+| `workspace-overview-2-0-6.webp` | `assets/01/01-workspace-dark.png` | 1440 × 960 | Conversation/editor layout with a seeded conversation and script-prepared sample fix |
+| `first-session-2-0-6.webp` | `assets/02/02-session-setup.png` | 1440 × 960 | Session setup with placeholder credentials; no request sent |
+| `task-draft-2-0-6.webp` | `assets/04/01-task-draft.png` | 1440 × 1080 | Unsubmitted task draft, not an executing task |
+| `worktree-setup-2-0-6.webp` | `assets/05/01-new-session-worktree.png` | 1440 × 1080 | Worktree configuration, not a created worktree |
+| `git-review-2-0-6.webp` | `assets/06/01-regression-test-diff.png` | 1440 × 1080 | Actual sample test diff, not AI-generated changes or a commit |
+| `memory-draft-2-0-6.webp` | `assets/07/02-memory-draft.png` | 1440 × 1080 | Unsaved rule draft, not verified recall |
+| `gateway-setup-2-0-6.webp` | `assets/09/02-wechat-unpaired.png` | 1440 × 1080 | Unpaired, disabled gateway configuration; no messages sent |
+| `prompt-library-2-0-6.webp` | `assets/08/01-prompts.png` | 1440 × 1080 | Viewing a built-in task prompt, not running it |
+| `mcp-setup-2-0-6.webp` | `assets/08/03-mcp.png` | 1440 × 1080 | MCP setup without configured servers or tool calls |
+| `editor-markdown-2-0-6.webp` | `assets/10/01-reading-preview.png` | 1440 × 1080 | Actual Markdown/Mermaid rendering of manually prepared notes |
+| `editor-mind-map-2-0-6.webp` | `assets/10/02-mindmap.png` | 1440 × 1080 | Actual visual rendering of a manually prepared map |
+| `settings-security-2-0-6.webp` | `assets/12/01-security.png` | 1440 × 1080 | Unconfigured MFA and API token options; local demo audit entries |
+| `workspace-mobile-2-0-6.webp` | `assets/01/07-workspace-mobile.png` | 390 × 844 | Responsive viewport with the same seeded sample, not a physical-device test |
+
+The 13 optimized screenshots total **578,260 bytes**. Convert each approved PNG without resizing or carrying metadata:
+
+```sh
+cwebp -q 88 -metadata none SOURCE.png -o assets/screenshots/NAME-2-0-6.webp
+```
+
+The article recording `assets/01/06-navigation-demo.mp4` is copied unchanged to `assets/videos/demo-workspace-2-0-6.mp4`: **8.167 seconds**, 1440 × 960, H.264, silent, 293,623 bytes. It shows Command Center → return → Task Inbox → return, not model execution. SHA-256: `8a72c79e3fcdf31d460e5bd8df3e1861a6b247d4e9ec2d2fb41a27fdb1f7232e`. `demo-workspace-poster-2-0-6.webp` is its first frame, extracted with FFmpeg and encoded at WebP quality 88.
+
+The website uses MP4 instead of embedding the article GIF: text is clearer, the download is smaller, and playback remains under user control. Both players have posters, `controls`, `playsinline`, and `preload="none"`; neither autoplays. Images below the hero are lazy-loaded and reserve their actual intrinsic dimensions. Workflow switching updates image dimensions, visible provenance, and the lightbox caption together.
+
+Review sources and preparation details in the article workspace's `evidence/01-demo-notes.md`, `evidence/02-publishing-notes.md`, `evidence/04-06-media-notes.md`, `evidence/07-12-media-notes.md`, and `demo/README.md`. The selected source hashes were checked against the article upload manifest before conversion. New optimized images were visually reviewed; source-frame review sheets for the recording remain in the private article runtime and are not public assets.
+
+No model calls, task execution, account pairing, MCP connections, memory saves, tokens, commits, or pushes were performed for this website refresh. Do not turn configuration screenshots into claims of successful integration or autonomous delivery.
+
+### Retained 2.0.5 media and earlier capture history
+
+The PDF annotation screenshot and mind-map recording still used on the page come from **Pi Cloud 2.0.5**, commit `4270a87`, and are individually version-labelled. Other older media remain at their existing URLs for compatibility. The following sections preserve that earlier capture procedure and history.
 
 The Atlas repository, three conversations, task drafts, and memories are **sample content seeded for demonstration**. The conversation is not evidence of a live model run or test execution. No live AI requests were made. A nonfunctional placeholder credential enabled the model selector in the isolated demo profile; it must never be reused as a real credential.
 

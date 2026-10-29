@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const showcaseImg = document.getElementById('showcase-img');
   const showcaseTitle = document.getElementById('showcase-title');
   const showcaseDesc = document.getElementById('showcase-desc');
+  const showcaseNote = document.getElementById('showcase-note');
   const zoomHint = document.querySelector('.zoom-hint');
 
   showcaseTabs.forEach((tab) => {
@@ -76,16 +77,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const imgSrc = tab.dataset.img;
       const title = tab.dataset.title;
       const desc = tab.dataset.desc;
+      const note = tab.dataset.note;
 
       if (showcaseImg && imgSrc) {
+        showcaseImg.width = Number(tab.dataset.width);
+        showcaseImg.height = Number(tab.dataset.height);
         showcaseImg.src = imgSrc;
         showcaseImg.alt = title;
       }
       if (showcaseTitle) showcaseTitle.textContent = title;
       if (showcaseDesc) showcaseDesc.textContent = desc;
+      if (showcaseNote) showcaseNote.textContent = note;
       if (zoomHint) {
         zoomHint.dataset.lightbox = imgSrc;
-        zoomHint.dataset.caption = title;
+        zoomHint.dataset.caption = `${title} · ${note}`;
       }
     });
   });
@@ -113,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('showcase-open')?.addEventListener('click', () => {
-    if (showcaseImg) openLightbox(showcaseImg.src, showcaseTitle?.textContent);
+    if (showcaseImg) openLightbox(showcaseImg.src, `${showcaseTitle?.textContent} · ${showcaseNote?.textContent}`);
   });
 
   closeBtn?.addEventListener('click', () => dialog?.close());
